@@ -3,9 +3,12 @@ package kjminn.kr.hs.emirim.googlemaptest;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
     GoogleMap googleMap;
@@ -24,8 +27,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         this.googleMap= googleMap;
         googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);//위성지도로 바꾸어주기
+        //다른지역으로 바꾸어주기
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.512149,126.833120), 17)); //17==확대 축소 레밸
         googleMap.getUiSettings().setZoomControlsEnabled(true); //확대축소 버튼
-
-
     }
 }
